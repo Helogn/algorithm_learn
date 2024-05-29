@@ -58,6 +58,8 @@ class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
         size_t vec_size = nums.size();
+        if (vec_size == 0) return 0;
+        
         vector<int> res;
         int res_num = 0;
         int new_vec_point = 0;
