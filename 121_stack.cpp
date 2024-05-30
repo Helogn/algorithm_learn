@@ -22,28 +22,15 @@ public:
         size_t size = prices.size();
         if (size<=1) return 0;
         
-        int minV = std::min((prices[size - 2] - prices[size - 1]),0);
-        for(int i = size - 1; i--)
+        int min_price = prices[0];
+        int max_value = 0;
+        for(int i = 1; i < size; i++)
         {
-            minV = prices[i] - 
+            max_value = max(max_value, prices[i] - min_price);
+            min_price = min(min_price, prices[i]);
         }
 
-
-        vector<int> max_money(size);
-        int minus = prices[size-2] - prices[size-1];
-        max_money[size - 1] = (0 > minus)? minus:0;
-        int lower = prices[size - 1];
-        int res = 0;
-        
-        for (int i = size-2; i>=0; i--)
-        {
-            lower = (lower > prices[i+1]) ? prices[i+1] : lower;
-            max_money[i] = lower;
-            int diff = prices[i+1] - lower;
-            res = (res > diff) ? res : diff;
-        }
-        
-        return res;
+        return max_value;
 
     }
 };
