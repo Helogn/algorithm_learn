@@ -19,11 +19,6 @@ public:
     int hIndex(vector<int>& citations) {
         int size = citations.size();
         if (citations.empty()) return 0;
-        if (size == 1)
-        {
-            if (citations[0] == 0)   {return 0;}
-            else  {return 1;}
-        }
 
         std::sort(citations.begin(), citations.end(), std::greater<int>());
         int res = 0;
